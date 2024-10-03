@@ -6,7 +6,7 @@ pipeline {
         stage('etapa 1'){
             steps{
                 echo 'hola mundo'
-                sh 'hola mundo desde el terminal'
+                sh 'echo "hola mundo desde el terminal"'
             }
         }
 
