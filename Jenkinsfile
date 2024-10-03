@@ -1,7 +1,10 @@
 pipeline {
 
     agent any
-
+    environment{
+        NPM_CONFIG_CACHE=${"workspace"}./nmp
+    }
+    ]
     stages{
         stage('etapa de construccvión de la aplicación'){
             agent{
