@@ -1,32 +1,29 @@
 pipeline {
-
     agent any
-    environment{
-        NPM_CONFIG_CACHE=${"workspace"}./nmp
+    environment {
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
-    ]
     stages{
-        stage('etapa de construccvión de la aplicación'){
-            agent{
-                docker{
-                    image:'node:alpine3.20'
+        stage('etapa de construccion de aplicacion'){
+            agent {
+                docker {
+                    image 'node:alpine3.20'
+                    reuseNode true
                 }
             }
-            stages("Install"){
-                stage{
+            stages{
+                stage("install"){
                     steps{
-                        step{
-                            sh 'npm install'
-                        }
+                        sh 'npm install'
                     }
                 }
-            }
-            stages("Echo del mensaje"){
-                steps{
-                  echo 'hola mundo'
-                  sh 'echo "hola mundo desde el terminal"'
+                stage("test"){
+                    steps{
+                        sh 'npm install'
+                    }
                 }
+                }
+            }
         }
-       
     }
 }
